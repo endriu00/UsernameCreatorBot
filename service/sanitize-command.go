@@ -11,5 +11,6 @@ func SanitizeCommand(text string) string {
 	stringScan.Init(strings.NewReader(text))
 	_ = stringScan.Scan()
 	command := stringScan.TokenText()
+	command += stringScan.TokenText()
 	return command
 }
