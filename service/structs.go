@@ -1,8 +1,6 @@
 package service
 
-import (
-	"time"
-)
+import ()
 
 /*
   Update type is the type mirroring the concept of the request
@@ -24,10 +22,10 @@ type Update struct {
 	  - Chat that is the chat object in which the Message is
 */
 type Message struct {
-	Text string    `json:"text"`
-	Chat Chat      `json:"chat"`
-	From User      `json:"from"`
-	Date time.Time `json:"date"`
+	Text string `json:"text"`
+	Chat Chat   `json:"chat"`
+	From User   `json:"from"`
+	Date int    `json:"date"`
 }
 
 /*
