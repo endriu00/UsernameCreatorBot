@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	http.ListenAndServe(os.Getenv("PORT"), http.HandlerFunc(service.HandleTelegramWebhook))
+	http.ListenAndServe(":"+os.Getenv(`PORT`), http.HandlerFunc(service.HandleTelegramWebhook))
 }

@@ -8,7 +8,7 @@ import (
 )
 
 func SendResponse(response string, chat Chat) error {
-	telegramApiUrl := "https://api.telegram.org/bot" + os.Getenv("TOKEN") + "/sendMessage"
+	telegramApiUrl := "https://api.telegram.org/bot" + os.Getenv(`TOKEN`) + "/sendMessage"
 	_, err := http.PostForm(
 		telegramApiUrl,
 		url.Values{
