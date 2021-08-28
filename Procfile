@@ -1,1 +1,1 @@
-web: bin/bot
+web: main.go
