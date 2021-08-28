@@ -3,11 +3,12 @@ package service
 import (
 	"net/http"
 	"net/url"
+	"os"
 	"strconv"
 )
 
 func SendResponse(response string, chat Chat) error {
-	telegramApiUrl := "https://api.telegram.org/bot1968866540:AAE8ZDEtUcEpwFqqLX9r5N3nrrQhHwwx4t4" + "/sendMessage"
+	telegramApiUrl := "https://api.telegram.org/bot" + os.Getenv("BotToken") + "/sendMessage"
 	_, err := http.PostForm(
 		telegramApiUrl,
 		url.Values{
