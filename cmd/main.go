@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	http.ListenAndServe(":3000", http.HandlerFunc(service.HandleTelegramWebhook))
+	http.ListenAndServe(":8080", http.HandlerFunc(service.HandleTelegramWebhook))
 }
