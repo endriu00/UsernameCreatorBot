@@ -32,11 +32,15 @@ func HandleRequest(update *Update) error {
 		response = PackInfo(message)
 
 	case "/generate":
-		response = GenerateUsername(strings.TrimPrefix(message.Text, command))
+		response, err = GenerateUsername(strings.TrimPrefix(message.Text, command))
+		if err != nil {
+			log.Warn("Some usernames could not have been created!")
+			log.WithError(err)
+		}
 	case "/commands":
 		response = PackCommands()
 	default:
-		response = PackCommands()
+		response = PackInfo(message)
 	}
 
 	//Step 3: send usernames
