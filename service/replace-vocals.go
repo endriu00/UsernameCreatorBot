@@ -2,6 +2,8 @@ package service
 
 import (
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 )
 
 /*
@@ -18,6 +20,8 @@ func ReplaceVocals(startingWord, toReplace string, repNum int) string {
 		charS := string(char)
 		if charS == "a" || charS == "e" || charS == "i" || charS == "o" || charS == "u" {
 			replacedUsername := strings.Replace(startingWord, charS, toReplace, 1)
+			log.Warn(replacedUsername)
+
 			repUserNoSpace := strings.TrimSpace(replacedUsername)
 			strings.Join([]string{usernames, repUserNoSpace}, "\n")
 			hits++

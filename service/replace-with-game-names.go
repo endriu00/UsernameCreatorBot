@@ -29,7 +29,7 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 			idx++
 			letter := string(token)
 			currentWord = strings.Join([]string{currentWord, letter}, "")
-			if idx < 2 {
+			if idx < 3 {
 				continue
 			}
 			if strings.HasPrefix(scanner.Text(), letter) {
@@ -37,6 +37,7 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 				gameWord = strings.TrimSpace(gameWord)
 				usernames = strings.Join([]string{usernames, gameWord}, "\n")
 				hits++
+				break
 			}
 		}
 	}
