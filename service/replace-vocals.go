@@ -23,7 +23,7 @@ func ReplaceVocals(startingWord, toReplace string, repNum int) string {
 			log.Warn(replacedUsername)
 
 			repUserNoSpace := strings.TrimSpace(replacedUsername)
-			strings.Join([]string{usernames, repUserNoSpace}, "\n")
+			usernames = strings.Join([]string{usernames, repUserNoSpace}, "\n")
 			hits++
 		}
 	}
