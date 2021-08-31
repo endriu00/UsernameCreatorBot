@@ -11,7 +11,7 @@ func GenerateUsername(startingWord string) (string, error) {
 	//From here it starts the username creation methods invocation.
 	log.Info("Generating usernames with vocal replacement. Function: ReplaceVocals")
 	usernames = strings.Join([]string{usernames, ReplaceVocals(startingWord, "x", 2)}, "")
-	log.Info("Function: ReplaceVocals exiting correctly")
+	log.Info("Function: ReplaceVocals exiting correctly.\nUsernames generated till now: " + usernames)
 
 	log.Info("Generating usernames with game names replacement. Function: ReplaceWithGameNames")
 	usernameGames, err := ReplaceWithGameNames(startingWord, 4)
@@ -20,7 +20,7 @@ func GenerateUsername(startingWord string) (string, error) {
 		return usernames, err
 	}
 	usernames = strings.Join([]string{usernames, usernameGames}, "")
-	log.Info("Function: ReplaceWithGameNames exiting correctly")
+	log.Info("Function: ReplaceWithGameNames exiting correctly" + "\nUsernames generated till now: " + usernames)
 
 	return usernames, nil
 }
