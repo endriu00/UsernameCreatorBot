@@ -17,15 +17,18 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		log.Warn(scanner.Text())
 		if hits == repNum {
 			break
 		}
 		idx := 0
 		currentWord := ""
 		for _, token := range startingWord {
+
+			log.Info(currentWord)
+
+			idx++
 			letter := string(token)
-			currentWord += letter
+			currentWord = strings.Join([]string{currentWord, letter}, "")
 			if idx < 2 {
 				continue
 			}
@@ -34,7 +37,6 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 				usernames += "\n"
 				hits++
 			}
-			idx++
 		}
 	}
 	return usernames, nil

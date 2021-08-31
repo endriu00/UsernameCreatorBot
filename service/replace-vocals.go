@@ -17,8 +17,8 @@ func ReplaceVocals(startingWord, toReplace string, repNum int) string {
 		}
 		charS := string(char)
 		if charS == "a" || charS == "e" || charS == "i" || charS == "o" || charS == "u" {
-			usernames += strings.Replace(startingWord, charS, toReplace, 1)
-			usernames += "\n"
+			replacedUsername := strings.Replace(startingWord, charS, toReplace, 1)
+			strings.Join([]string{usernames, replacedUsername}, "\n")
 			hits++
 		}
 	}
