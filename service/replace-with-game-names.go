@@ -33,8 +33,9 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 				continue
 			}
 			if strings.HasPrefix(scanner.Text(), letter) {
-				usernames += strings.Join([]string{currentWord, scanner.Text()}, "")
-				usernames += "\n"
+				gameWord := strings.Join([]string{strings.TrimSuffix(currentWord, letter), scanner.Text()}, "")
+				gameWord = strings.TrimSpace(gameWord)
+				usernames = strings.Join([]string{usernames, gameWord}, "\n")
 				hits++
 			}
 		}
