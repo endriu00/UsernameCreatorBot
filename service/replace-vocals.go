@@ -10,17 +10,17 @@ It is designed to replace vocals only.
 */
 func ReplaceVocals(startingWord, toReplace string, repNum int) string {
 	var usernames string
-	var idx int = 0
+	var hits int = 0
 	for _, char := range startingWord {
-		if idx == repNum {
+		if hits == repNum {
 			break
 		}
 		charS := string(char)
 		if charS == "a" || charS == "e" || charS == "i" || charS == "o" || charS == "u" {
 			usernames += strings.Replace(startingWord, charS, toReplace, 1)
 			usernames += "\n"
+			hits++
 		}
-		idx++
 	}
 	return usernames
 }

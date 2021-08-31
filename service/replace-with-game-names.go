@@ -2,6 +2,7 @@ package service
 
 import (
 	"bufio"
+	log "github.com/sirupsen/logrus"
 	"os"
 	"strings"
 )
@@ -16,6 +17,7 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
+		log.Warn(scanner.Text())
 		if hits == repNum {
 			break
 		}
