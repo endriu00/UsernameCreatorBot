@@ -29,8 +29,26 @@ func (bot Bot) HandleRequest(update *Update) error {
 	case "/help":
 		response = PackInfo(message)
 
-	case "/generate":
-		response, err = GenerateUsername(strings.TrimPrefix(message.Text, command))
+	case "/generategame":
+		response, err = GenerateUsername(strings.TrimPrefix(message.Text, command), "game")
+		if err != nil {
+			bot.log.Warn("Some game usernames could not have been created!")
+			bot.log.WithError(err)
+		}
+	case "/generatedate":
+		response, err = GenerateUsername(strings.TrimPrefix(message.Text, command), "date")
+		if err != nil {
+			bot.log.Warn("Some date usernames could not have been created!")
+			bot.log.WithError(err)
+		}
+	case "/generateenterprise":
+		response, err = GenerateUsername(strings.TrimPrefix(message.Text, command), "enterprise")
+		if err != nil {
+			bot.log.Warn("Some enterprise usernames could not have been created!")
+			bot.log.WithError(err)
+		}
+	case "/generatemix":
+		response, err = GenerateUsername(strings.TrimPrefix(message.Text, command), "mix")
 		if err != nil {
 			bot.log.Warn("Some usernames could not have been created!")
 			bot.log.WithError(err)
