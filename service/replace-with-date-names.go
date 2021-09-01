@@ -11,7 +11,7 @@ func ReplaceWithDateNames(startingWord string, repNum int) (string, error) {
 	var hits int = 0
 	file, err := os.Open("names/date.txt")
 	if err != nil {
-		return usernames, err
+		return "", err
 	}
 	scanner := bufio.NewScanner(file)
 
@@ -19,22 +19,10 @@ func ReplaceWithDateNames(startingWord string, repNum int) (string, error) {
 		if hits == repNum {
 			break
 		}
-		idx := 0
-		currentWord := ""
-		for _, token := range startingWord {
-			idx++
-			letter := string(token)
-			currentWord = strings.Join([]string{currentWord, letter}, "")
-			if idx < 3 {
-				continue
-			}
-			if strings.HasPrefix(scanner.Text(), letter) {
-				dateWord := strings.Join([]string{strings.TrimSuffix(currentWord, letter), scanner.Text()}, "")
-				dateWord = strings.TrimSpace(dateWord)
-				usernames = strings.Join([]string{usernames, dateWord}, "\n")
-				hits++
-				break
-			}
+		if startingWord[0] == scanner.Text()[0] {
+			match := strings.Join([]string{scanner.Text(), startingWord}, "")
+			usernames = strings.Join([]string{usernames, match}, "\n")
+			hits++
 		}
 	}
 	return usernames, nil
