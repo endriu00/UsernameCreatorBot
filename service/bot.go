@@ -2,12 +2,7 @@ package service
 
 import (
 	"github.com/sirupsen/logrus"
-	"net/http"
 )
-
-type BotInt interface {
-	HandleTelegramWebhook(w http.ResponseWriter, r *http.Request)
-}
 
 type Bot struct {
 	log              *logrus.Entry
