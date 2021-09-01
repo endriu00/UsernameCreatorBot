@@ -21,7 +21,7 @@ func main() {
 
 	//Create bot
 	bot := service.New(&service.Config{
-		Logger:           config.Logger,
+		Logger:           log,
 		TelegramApiUrl:   config.TelegramApiUrl,
 		TelegramBotToken: config.TelegramBotToken,
 	})
