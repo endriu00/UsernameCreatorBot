@@ -2,7 +2,6 @@ package service
 
 import (
 	"bufio"
-	log "github.com/sirupsen/logrus"
 	"os"
 	"strings"
 )
@@ -23,9 +22,6 @@ func ReplaceWithGameNames(startingWord string, repNum int) (string, error) {
 		idx := 0
 		currentWord := ""
 		for _, token := range startingWord {
-
-			log.Info(currentWord)
-
 			idx++
 			letter := string(token)
 			currentWord = strings.Join([]string{currentWord, letter}, "")

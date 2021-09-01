@@ -1,20 +1,19 @@
 package service
 
 import (
-	log "github.com/sirupsen/logrus"
 	"net/http"
 )
 
-func HandleTelegramWebhook(w http.ResponseWriter, r *http.Request) {
+func (bot *Bot) HandleTelegramWebhook(w http.ResponseWriter, r *http.Request) {
 
-	update, err := ParseTelegramRequest(r)
+	update, err := bot.ParseTelegramRequest(r)
 	if err != nil {
-		log.WithError(err).Error("Cannot parse telegram request.")
+		bot.log.WithError(err).Error("Cannot parse telegram request.")
 		return
 	}
-	err = HandleRequest(update)
+	err = bot.HandleRequest(update)
 	if err != nil {
-		log.WithError(err).Error("Handler returned an error.")
+		bot.log.WithError(err).Error("Handler returned an error.")
 		return
 	}
 }
