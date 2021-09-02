@@ -19,23 +19,9 @@ func ReplaceWithEnterpriseNames(startingWord string, repNum int) (string, error)
 		if hits == repNum {
 			break
 		}
-		idx := 0
-		currentWord := ""
-		for _, token := range startingWord {
-			idx++
-			letter := string(token)
-			currentWord = strings.Join([]string{currentWord, letter}, "")
-			if idx < 3 {
-				continue
-			}
-			if strings.HasPrefix(scanner.Text(), letter) {
-				enterpriseWord := strings.Join([]string{strings.TrimSuffix(currentWord, letter), scanner.Text()}, "")
-				enterpriseWord = strings.TrimSpace(enterpriseWord)
-				usernames = strings.Join([]string{usernames, enterpriseWord}, "\n")
-				hits++
-				break
-			}
-		}
+		match := strings.Join([]string{startingWord, scanner.Text()}, "")
+		usernames = strings.Join([]string{usernames, match}, "\n")
+		hits++
 	}
 	return usernames, nil
 }
