@@ -11,8 +11,9 @@ func (bot *Bot) SendResponse(response string, chat Chat) error {
 	_, err := http.PostForm(
 		telegramApiUrl,
 		url.Values{
-			"chat_id": {strconv.Itoa(chat.Id)},
-			"text":    {response},
+			"chat_id":    {strconv.Itoa(chat.Id)},
+			"text":       {response},
+			"parse_mode": {"MarkdownV2"},
 		})
 	if err != nil {
 		return err
