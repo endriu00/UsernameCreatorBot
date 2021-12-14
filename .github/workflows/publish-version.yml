@@ -20,8 +20,5 @@ jobs:
     steps:
       - name: release
         uses: release-drafter/release-drafter@v5
-        with:
-          config-name: .github/workflows/publish-version.yml
-          disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
