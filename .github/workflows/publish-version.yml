@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: release
-      - uses: release-drafter/release-drafter@v5
+        uses: release-drafter/release-drafter@v5
         with:
           config-name: .github/workflows/publish-version.yml
           disable-autolabeler: true
