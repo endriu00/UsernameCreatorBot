@@ -17,13 +17,14 @@ on:
   #      #uses: release-drafter/release-drafter@v5
 
   # create docker image and publish to dockerhub
+jobs:
   docker:
     needs: checkout
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2.4.0
-        
+
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & Push Docker image
         with:
