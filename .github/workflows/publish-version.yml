@@ -32,7 +32,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & Push Docker image
         with:
-          image: endriu00/UsernameCreatorBot
+          image: endriu00/usernamecreatorbot
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
