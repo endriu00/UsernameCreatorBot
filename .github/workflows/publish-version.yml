@@ -10,17 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        #### CHECKOUT MASTER/MAIN BRANCH
         uses: actions/checkout@v2.4.0
 
   # create release
-  release:
+  #release:
+  #  needs: checkout
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: release
+  #      uses: ncipollo/release-action@v1
+  #      with:
+  #        token: ${{ secrets.RELEASE_TOKEN }}
+  #        tag: 0.0.2
+  #      #uses: release-drafter/release-drafter@v5
+
+  # create docker image and publish to dockerhub
+  docker:
     needs: checkout
     runs-on: ubuntu-latest
     steps:
-      - name: release
-        uses: ncipollo/release-action@v1
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & Push Docker image
         with:
-          token: ${{ secrets.RELEASE_TOKEN }}
-          tag: 0.0.1
-        #uses: release-drafter/release-drafter@v5
+          image: endriu00/UsernameCreatorBot
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
