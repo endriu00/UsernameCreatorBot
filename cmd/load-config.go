@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// BotConfiguration is the configuration of the bot.
 type BotConfiguration struct {
 	Logger *logrus.Entry
 
