@@ -33,7 +33,7 @@ jobs:
         name: Build & Push Docker image
         with:
           image: endriu00/usernamecreatorbot
-          tags: IMAGE_TAG
+          tags: $IMAGE_TAG
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
