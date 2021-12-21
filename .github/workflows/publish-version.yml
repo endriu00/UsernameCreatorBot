@@ -22,12 +22,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-        name: checkout
+        name: Checkout
+
+      - name: Get tag for image
+        shell: bash
+        run: |
+          IMAGE_TAG=v.$(date -u +"%Y-%m-%d").${GITHUB_JOB}	
         
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & Push Docker image
         with:
           image: endriu00/usernamecreatorbot
+          tags: IMAGE_TAG
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
