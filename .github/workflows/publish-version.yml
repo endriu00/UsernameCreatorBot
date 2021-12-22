@@ -23,24 +23,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
         name: Checkout
-
-      - name: Get tag for image
-        shell: bash
-        run: |
-          IMAGE_TAG=v.$(date -u +"%Y-%m-%d").${GITHUB_JOB}	
-
-      - name: print IMAGE_TAG
-        shell: bash
-        run: |
-          echo $IMAGE_TAG \
-          echo ${IMAGE_TAG}
         
-      - uses: mr-smithers-excellent/docker-build-push@v5
-        name: Build & Push Docker image
-        with:
-          image: endriu00/usernamecreatorbot
-          tags: ${IMAGE_TAG}
-          registry: docker.io
-          dockerfile: Dockerfile
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build & Push Docker image
+        shell: bash
+        run: |
+          IMAGE_TAG=v.$(date -u +"%Y-%m-%d").${GITHUB_JOB} \
+          docker build -t endriu00/usernamecreatorbot:$IMAGE_TAG
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push endriu00/usernamecreatorbot:$IMAGE_TAG 
+
+          
+        #with:
+        #  image: endriu00/usernamecreatorbot
+        #  tags: ${IMAGE_TAG}
+        #  registry: docker.io
+        #  dockerfile: Dockerfile
+        #  username: ${{ secrets.DOCKER_USERNAME }}
+        #  password: ${{ secrets.DOCKER_PASSWORD }}
