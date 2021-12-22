@@ -28,8 +28,8 @@ jobs:
         shell: bash
         run: |
           IMAGE_TAG=v.$(date -u +"%Y-%m-%d").${GITHUB_JOB} \
-          docker build -t endriu00/usernamecreatorbot:$IMAGE_TAG
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -t endriu00/usernamecreatorbot:$IMAGE_TAG . \
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} \
           docker push endriu00/usernamecreatorbot:$IMAGE_TAG 
 
           
