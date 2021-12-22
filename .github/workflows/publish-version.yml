@@ -27,7 +27,7 @@ jobs:
       - name: Build & Push Docker image
         shell: bash
         run: |
-          IMAGE_TAG=v.$(date -u +"%Y-%m-%d").${GITHUB_JOB} && \
+          IMAGE_TAG=v.$(date -u +"%Y-%m-%d").${GITHUB_RUN_ID} && \
           docker build -t endriu00/usernamecreatorbot:$IMAGE_TAG . && \
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && \
           docker push endriu00/usernamecreatorbot:$IMAGE_TAG 
